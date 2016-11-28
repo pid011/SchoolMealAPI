@@ -77,11 +77,16 @@ namespace SchoolMeal
                 if (item == breakfastWord)
                 {
                     var breakfastIndex = strList.FindIndex(x => x == item);
-                    if (strList.Contains(lunchWord) || strList.Contains(dinnerWord))
+                    if (strList.Contains(lunchWord))
                     {
-                        var lastIndex = strList.FindIndex(x => x.First() == '[');
-                        breakfast = strList.GetRange(breakfastIndex + 1, lastIndex - (breakfastIndex + 1));
+                        var lunchIndex = strList.FindIndex(x => x == lunchWord);
+                        breakfast = strList.GetRange(breakfastIndex + 1, lunchIndex - (breakfastIndex + 1));
                         continue;
+                    }
+                    else if (strList.Contains(dinnerWord))
+                    {
+                        var dinnerIndex = strList.FindIndex(x => x == dinnerWord);
+                        breakfast = strList.GetRange(breakfastIndex + 1, dinnerIndex - (breakfastIndex + 1));
                     }
                     else
                     {
@@ -101,16 +106,16 @@ namespace SchoolMeal
                     }
                     else
                     {
-                        lunch = strList.GetRange(lunchIndex, strList.Count - 1);
-                        lunch.Remove(lunch.First());
+                        var lastIndex = strList.FindLastIndex(x => x == strList.Last());
+                        lunch = strList.GetRange(lunchIndex + 1, lastIndex - lunchIndex);
                         break;
                     }
                 }
                 if (item == dinnerWord)
                 {
                     var dinnerIndex = strList.FindIndex(x => x == item);
-                    dinner = strList.GetRange(dinnerIndex, strList.Count - 1);
-                    dinner.Remove(dinner.First());
+                    var lastIndex = strList.FindLastIndex(x => x == strList.Last());
+                    dinner = strList.GetRange(dinnerIndex + 1, lastIndex - dinnerIndex);
                     continue;
                 }
             }

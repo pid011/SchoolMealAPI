@@ -16,7 +16,24 @@ namespace SchoolMealTests
 
             var menu = meal.GetMealMenu();
 
+            foreach (var item in menu)
+            {
+                Debug.WriteLine(item.ToString());
+            }
             Assert.AreEqual(menu.Count, 30);
+        }
+
+        [TestMethod]
+        public void YeojuHighSchool()
+        {
+            var meal = new Meal(Regions.Gyeonggi, SchoolType.High, "J100000718");
+            var menu = meal.GetMealMenu();
+            foreach (var item in menu)
+            {
+                Debug.WriteLine(item.ToString());
+            }
+
+            // Assert.AreEqual(menu.Find(x => x.Date == new DateTime(2016, 11, 26)).IsExistMenu, false);
         }
     }
 }
