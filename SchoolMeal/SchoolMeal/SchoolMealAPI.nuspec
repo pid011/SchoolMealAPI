@@ -3,13 +3,13 @@
   <metadata>
     <id>SchoolMealAPI</id>
     <version>$version$</version>
-    <title>SchoolMeal Parsing API</title>
+    <title>Neis SchoolMeal API</title>
     <authors>Sepi</authors>
     <licenseUrl>https://github.com/pid011/SchoolMealAPI/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/pid011/SchoolMealAPI</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>We provide the food menu by parsing Neis homepage.</description>
-    <releaseNotes>You can follow the detail from Project Github Page.</releaseNotes>
+    <releaseNotes>Update title</releaseNotes>
     <copyright>Copyright 2016 Sepi</copyright>
     <tags>School Meal API</tags>
   </metadata>
