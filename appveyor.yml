@@ -5,11 +5,11 @@
   build:
     publish_nuget: true
   before_build:
-  - cmd: nuget restore
+  - cmd: nuget restore SchoolMeal\SchoolMeal.sln
   after_test:
-  - cmd: nuget pack "src\Haruair.Command\Haruair.Command.nuspec" -Version %APPVEYOR_BUILD_VERSION%
+  - cmd: nuget pack "SchoolMeal\SchoolMeal\SchoolMealAPI.nuspec" -Version %APPVEYOR_BUILD_VERSION%
   artifacts:
-  - path: '**\Haruair.Command.*.nupkg'
+  - path: '**\SchoolMealAPI.*.nupkg'
     name: Command
   deploy:
   - provider: NuGet
