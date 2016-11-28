@@ -3,12 +3,12 @@
   <metadata>
     <id>SchoolMealAPI</id>
     <version>$version$</version>
-    <title>전국 초중고등학교 급식 API</title>
-    <authors>Edward Kim (Haruair)</authors>
+    <title>SchoolMeal Parsing API</title>
+    <authors>Sepi</authors>
     <licenseUrl>https://github.com/pid011/SchoolMealAPI/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/pid011/SchoolMealAPI</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>나이스 홈페이지를 파싱하여 급식 식단표를 제공합니다.</description>
+    <description>We provide the food menu by parsing Neis homepage.</description>
     <releaseNotes>You can follow the detail from Project Github Page.</releaseNotes>
     <copyright>Copyright 2016 Sepi</copyright>
     <tags>School Meal API</tags>
