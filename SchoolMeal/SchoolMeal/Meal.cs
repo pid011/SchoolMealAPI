@@ -1,10 +1,14 @@
 ﻿using SchoolMeal.Exception;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
 
 namespace SchoolMeal
 {
@@ -32,6 +36,7 @@ namespace SchoolMeal
         /// 식단표 정보를 받기위한 변수를 지정하고 <see cref="Meal"/>클래스의 새 인스턴스를 초기화 합니다.
         /// </summary>
         /// <param name="region">해당 교육기관의 교육관할지역</param>
+        /// <param name="type">해당 교육기관의 종류</param>
         /// <param name="schoolCode">해당 교육기관의 고유코드</param>
         public Meal(Regions region, SchoolType type, string schoolCode)
         {
@@ -43,135 +48,34 @@ namespace SchoolMeal
         /// <summary>
         /// 비동기로 급식메뉴를 나이스 홈페이지에서 불러와서 <see cref="List{T}"/>형태로 제공합니다.
         /// </summary>
-        /// <exception cref="SchoolNotFoundException"/>
-        /// <exception cref="FailToParseException"/>
+        /// <exception cref="FaildToParseException"/>
         /// <returns></returns>
-        public async Task<List<MealMenu>> GetMealMenuAsync()
+        public List<MealMenu> GetMealMenu()
         {
-            List<MealMenu> menu = null;
             try
             {
-                Uri schoolMealUri = 
-                    new Uri("http://" + RegionToString(this.Region) + "/" + "sts_sci_md00_001.do" + 
-                    "?" + "schulCode=" + this.SchoolCode + "&" +"schulCrseScCode=" + SchoolTypeToInt(this.School) + 
-                    "&" + "schulKndScCode=" + "0" + SchoolTypeToInt(this.School));
+                string url =
+                    "http://" + RegionToString(this.Region) + "/" + "sts_sci_md00_001.do" +
+                    "?" + "schulCode=" + this.SchoolCode + "&" + "schulCrseScCode=" + SchoolTypeToInt(this.School) +
+                    "&" + "schulKndScCode=" + "0" + SchoolTypeToInt(this.School);
 
-                using (HttpClient client = new HttpClient())
+                // var doc = new HtmlWeb().Load(url, "GET");
+                var doc = new HtmlWeb().Load(url);
+
+                if (doc == null)
                 {
-                    string html = await client.GetStringAsync(schoolMealUri);
-
-                    menu = MealParser.HtmlToMealMenu(html);
+                    throw new FaildToParseException();
                 }
+                var menu = MealParser.ParseHtml(doc);
+                menu.RemoveAll(x => x == null);
+                return menu;
             }
-            catch (HttpRequestException)
+            catch (FaildToParseException)
             {
-                throw new SchoolNotFoundException("해당 교육기관이 존재하지 않습니다.");
+                throw new FaildToParseException();
             }
-            catch (FailToParseException)
-            {
-                throw new FailToParseException("html 파싱에 실패하였습니다.");
-            }
-
-            return menu;
         }
 
-        /// <summary>
-        /// 해당 교육기관의 종류를 열거합니다.
-        /// </summary>
-        public enum SchoolType
-        {
-            /// <summary>
-            /// 병설유치원
-            /// </summary>
-            Kindergarden,
-            /// <summary>
-            /// 초등학교
-            /// </summary>
-            Elementary,
-            /// <summary>
-            /// 중학교
-            /// </summary>
-            Middle,
-            /// <summary>
-            /// 고등학교
-            /// </summary>
-            High
-        }
-
-        /// <summary>
-        /// 교육기관의 관할지역을 열거합니다.
-        /// </summary>
-        public enum Regions
-        {
-            /// <summary>
-            /// 서울특별시
-            /// </summary>
-            Seoul,
-            /// <summary>
-            /// 인천광역시
-            /// </summary>
-            Incheon,
-            /// <summary>
-            /// 부산광역시
-            /// </summary>
-            Busan,
-            /// <summary>
-            /// 광주광역시
-            /// </summary>
-            Gwangju,
-            /// <summary>
-            /// 대전광역시
-            /// </summary>
-            Daejeon,
-            /// <summary>
-            /// 대구광역시
-            /// </summary>
-            Daegu,
-            /// <summary>
-            /// 세종특별자치시
-            /// </summary>
-            Sejong,
-            /// <summary>
-            /// 울산광역시
-            /// </summary>
-            Ulsan,
-            /// <summary>
-            /// 경기도
-            /// </summary>
-            Gyeonggi,
-            /// <summary>
-            /// 강원도
-            /// </summary>
-            Kangwon,
-            /// <summary>
-            /// 충청북도
-            /// </summary>
-            Chungbuk,
-            /// <summary>
-            /// 충청남도
-            /// </summary>
-            Chungnam,
-            /// <summary>
-            /// 경상북도
-            /// </summary>
-            Gyeongbuk,
-            /// <summary>
-            /// 경상남도
-            /// </summary>
-            Gyeongnam,
-            /// <summary>
-            /// 전라북도
-            /// </summary>
-            Jeonbuk,
-            /// <summary>
-            /// 전라남도
-            /// </summary>
-            Jeonnam,
-            /// <summary>
-            /// 제주특별자치도
-            /// </summary>
-            Jeju
-        }
 
         private string RegionToString(Regions region)
         {
@@ -260,4 +164,101 @@ namespace SchoolMeal
             return result;
         }
     }
+    /// <summary>
+        /// 해당 교육기관의 종류를 열거합니다.
+        /// </summary>
+     public enum SchoolType
+        {
+            /// <summary>
+            /// 병설유치원
+            /// </summary>
+            Kindergarden,
+            /// <summary>
+            /// 초등학교
+            /// </summary>
+            Elementary,
+            /// <summary>
+            /// 중학교
+            /// </summary>
+            Middle,
+            /// <summary>
+            /// 고등학교
+            /// </summary>
+            High
+        }
+
+    /// <summary>
+        /// 교육기관의 관할지역을 열거합니다.
+        /// </summary>
+    public enum Regions
+        {
+            /// <summary>
+            /// 서울특별시
+            /// </summary>
+            Seoul,
+            /// <summary>
+            /// 인천광역시
+            /// </summary>
+            Incheon,
+            /// <summary>
+            /// 부산광역시
+            /// </summary>
+            Busan,
+            /// <summary>
+            /// 광주광역시
+            /// </summary>
+            Gwangju,
+            /// <summary>
+            /// 대전광역시
+            /// </summary>
+            Daejeon,
+            /// <summary>
+            /// 대구광역시
+            /// </summary>
+            Daegu,
+            /// <summary>
+            /// 세종특별자치시
+            /// </summary>
+            Sejong,
+            /// <summary>
+            /// 울산광역시
+            /// </summary>
+            Ulsan,
+            /// <summary>
+            /// 경기도
+            /// </summary>
+            Gyeonggi,
+            /// <summary>
+            /// 강원도
+            /// </summary>
+            Kangwon,
+            /// <summary>
+            /// 충청북도
+            /// </summary>
+            Chungbuk,
+            /// <summary>
+            /// 충청남도
+            /// </summary>
+            Chungnam,
+            /// <summary>
+            /// 경상북도
+            /// </summary>
+            Gyeongbuk,
+            /// <summary>
+            /// 경상남도
+            /// </summary>
+            Gyeongnam,
+            /// <summary>
+            /// 전라북도
+            /// </summary>
+            Jeonbuk,
+            /// <summary>
+            /// 전라남도
+            /// </summary>
+            Jeonnam,
+            /// <summary>
+            /// 제주특별자치도
+            /// </summary>
+            Jeju
+        }
 }
