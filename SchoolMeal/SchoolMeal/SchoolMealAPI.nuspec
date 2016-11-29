@@ -1,20 +1,25 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>SchoolMealAPI</id>
+    <id>$id$</id>
     <version>$version$</version>
-    <title>Neis SchoolMeal API</title>
-    <authors>Sepi</authors>
+    <title>NEIS SchoolMeal API</title>
+    <authors>$author$</authors>
     <licenseUrl>https://github.com/pid011/SchoolMealAPI/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/pid011/SchoolMealAPI</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>We provide the food menu by parsing Neis homepage.</description>
-    <releaseNotes>Update title</releaseNotes>
-    <copyright>Copyright 2016 Sepi</copyright>
-    <tags>School Meal API</tags>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Add Dependency File</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>SchoolMeal NEIS</tags>
   </metadata>
 
   <files>
     <file src="bin\Release\**\SchoolMeal.*" target="lib" />
   </files>
+
+  <dependencies>
+    <dependency id="HtmlAgilityPack" version="1.4.9.5" />
+  </dependencies>
+
 </package>
