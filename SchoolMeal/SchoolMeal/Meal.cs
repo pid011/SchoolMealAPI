@@ -165,8 +165,8 @@ namespace SchoolMeal
         }
     }
     /// <summary>
-        /// 해당 교육기관의 종류를 열거합니다.
-        /// </summary>
+    /// 해당 교육기관의 종류를 열거합니다.
+    /// </summary>
      public enum SchoolType
         {
             /// <summary>
@@ -188,8 +188,8 @@ namespace SchoolMeal
         }
 
     /// <summary>
-        /// 교육기관의 관할지역을 열거합니다.
-        /// </summary>
+    /// 교육기관의 관할지역을 열거합니다.
+    /// </summary>
     public enum Regions
         {
             /// <summary>
