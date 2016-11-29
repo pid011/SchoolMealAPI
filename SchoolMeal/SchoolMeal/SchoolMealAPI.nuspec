@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>SchoolMeal</id>
+    <id>SchoolMealParser</id>
     <version>$version$</version>
     <title>NEIS SchoolMeal API</title>
     <authors>Sepi</authors>
