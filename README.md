@@ -2,7 +2,7 @@
 전국 초중고등학교 급식 API :meat_on_bone:  
 
 ## NuGet
-https://www.nuget.org/packages/SchoolMealAPI
+https://www.nuget.org/packages/SchoolMealParser/
 
 ## 사용방법
 1. NuGet 패키지를 다운로드 해주세요. (SchoolMealAPI)
