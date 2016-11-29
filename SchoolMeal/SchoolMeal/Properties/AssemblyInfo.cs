@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 제어됩니다. 어셈블리와 관련된 정보를 수정하려면
 // 이러한 특성 값을 변경하세요.
 [assembly: AssemblyTitle("SchoolMeal")]
-[assembly: AssemblyDescription("NEIS 홈페이지를 파싱하여 급식메뉴를 API형태로 제공합니다.")]
+[assembly: AssemblyDescription("provide the school meals by parsing Neis homepage.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sepi")]
 [assembly: AssemblyProduct("SchoolMealAPI")]
