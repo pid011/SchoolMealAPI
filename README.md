@@ -15,3 +15,6 @@ Meal meal = new Meal(Regions.Gyeonggi, SchoolType.Middle, "J100005350");
 ```{.cs}
 var menu = meal.GetMealMenu();
 ```
+
+더 자세한 항목은 위키 참조.
+https://github.com/pid011/SchoolMealAPI/wiki
