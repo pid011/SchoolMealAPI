@@ -9,13 +9,9 @@
     <projectUrl>https://github.com/pid011/SchoolMealAPI</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Add xml file</releaseNotes>
+    <releaseNotes>Fix etc...</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>SchoolMeal NEIS</tags>
-    
-    <dependencies>
-      <dependency id="HtmlAgilityPack" version="1.4.9.5" />
-    </dependencies>
   </metadata>
 
   <files>
