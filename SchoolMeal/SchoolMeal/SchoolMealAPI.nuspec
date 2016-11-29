@@ -10,8 +10,12 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Fix etc...</releaseNotes>
-    <copyright>$copyright$</copyright>
+    <copyright>Copyright Sepi 2016</copyright>
     <tags>SchoolMeal NEIS</tags>
+    
+    <dependencies>
+      <dependency id="HtmlAgilityPack" version="1.4.9.5" />
+    </dependencies>
   </metadata>
 
   <files>
