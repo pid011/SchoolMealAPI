@@ -9,13 +9,14 @@
     <projectUrl>https://github.com/pid011/SchoolMealAPI</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Add Dependency File</releaseNotes>
+    <releaseNotes>Add xml file</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>SchoolMeal NEIS</tags>
   </metadata>
 
   <files>
-    <file src="bin\Release\**\SchoolMeal.*" target="lib" />
+    <file src="bin\Release\**\SchoolMeal.dll" target="lib" />
+    <file src="bin\Release\**\SchoolMeal.xml" target="lib" />
   </files>
 
   <dependencies>
