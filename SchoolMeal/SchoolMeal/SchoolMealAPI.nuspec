@@ -18,6 +18,6 @@
   </metadata>
 
   <files>
-    <file src="bin\Release\SchoolMeal.dll" target="lib" />
+    <file src="bin\Release\**\SchoolMeal.dll" target="lib" />
   </files>
 </package>
