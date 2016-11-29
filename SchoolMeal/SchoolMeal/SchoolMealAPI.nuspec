@@ -8,8 +8,8 @@
     <licenseUrl>https://github.com/pid011/SchoolMealAPI/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/pid011/SchoolMealAPI</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>provide the school meals by parsing 'NEIS' homepage.</description>
-    <releaseNotes>Fix etc...</releaseNotes>
+    <description>provides school meals by parsing the NEIS homepage.</description>
+    <releaseNotes>Change description</releaseNotes>
     <copyright>Copyright Sepi 2016</copyright>
     <tags>SchoolMeal NEIS</tags>
     <dependencies>
