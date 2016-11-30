@@ -8,8 +8,8 @@
     <licenseUrl>https://github.com/pid011/SchoolMealAPI/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/pid011/SchoolMealAPI</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>provides school meals by parsing the NEIS homepage.</description>
-    <releaseNotes>Change description</releaseNotes>
+    <description>NEIS 웹페이지에서 급식표를 파싱해서 API형태로 제공합니다.</description>
+    <releaseNotes>Downgrade .NET Framework</releaseNotes>
     <copyright>Copyright Sepi 2016</copyright>
     <tags>SchoolMeal NEIS</tags>
     <dependencies>
