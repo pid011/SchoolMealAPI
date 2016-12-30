@@ -15,6 +15,7 @@ namespace SchoolMeal
     /// <summary>
     /// 나이스 홈페이지에서 가져온 급식메뉴 리스트를 제공합니다.
     /// </summary>
+    [Serializable]
     public class Meal
     {
         /// <summary>

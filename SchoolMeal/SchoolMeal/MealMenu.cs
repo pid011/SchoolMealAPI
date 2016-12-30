@@ -9,6 +9,7 @@ namespace SchoolMeal
     /// <summary>
     /// 급식메뉴에 대한 속성들을 제공합니다.
     /// </summary>
+    [Serializable]
     public class MealMenu
     {
         /// <summary>

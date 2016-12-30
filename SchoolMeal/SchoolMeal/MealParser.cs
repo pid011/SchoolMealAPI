@@ -12,6 +12,7 @@ namespace SchoolMeal
     /// <summary>
     /// 식단표 관련 파싱 메서드 모음을 나타냅니다.
     /// </summary>
+    [Serializable]
     internal static class MealParser
     {
         /// <summary>
